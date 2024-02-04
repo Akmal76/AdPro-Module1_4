@@ -39,48 +39,26 @@ public class CreateProductFunctionalTest {
     // Test menuju halaman Create Product
     @Test
     void createProductPage_isCorrect(ChromeDriver driver) throws Exception {
-        // Exercise
         driver.get(baseUrl + "/product/create");
         String pageTitle = driver.getTitle();
 
-        // Verify
         assertEquals("Create New Product", pageTitle);
     }
 
     // Test untuk cek keberhasilkan dalam Create Product
     @Test
     void createProductPost_isCorrect(ChromeDriver driver) throws Exception {
-        // Exercise
         driver.get(baseUrl + "/product/create");
         driver.findElement(By.id("nameInput")).sendKeys("Sampo Cap Bambang");
         driver.findElement(By.id("quantityInput")).sendKeys("100");
         driver.findElement(By.id("submitButton")).click();
         String pageTitle = driver.getTitle();
 
-        // Verify
         assertEquals("Product List", pageTitle);
-    }
 
-    /// Test untuk cek keberhasilan pengalihan halaman ke Product List
-    @Test
-    void productListPage_isCorrect(ChromeDriver driver) throws Exception {
-        // Exercise
-        driver.get(baseUrl + "/product/list");
-        String pageTitle = driver.getTitle();
-
-        // Verify
-        assertEquals("Product List", pageTitle);
-    }
-
-    // Test untuk cek apakah product yang tadi dibuat berhasil ditampilkan
-    @Test
-    void createdProduct_isCorrect(ChromeDriver driver) throws Exception {
-        // Exercise
-        driver.get(baseUrl + "/product/list");
         String productName = driver.findElement(By.xpath("//tbody/tr[1]/td[1]")).getText();
         String productQuantity = driver.findElement(By.xpath("//tbody/tr[1]/td[2]")).getText();
 
-        // Verify
         assertEquals("Sampo Cap Bambang", productName);
         assertEquals("100", productQuantity);
     }
