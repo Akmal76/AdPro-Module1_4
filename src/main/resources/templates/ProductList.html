@@ -24,7 +24,7 @@
                         <td th:text="${product.productQuantity}"></td>
                         <td>
                             <!-- Penggunaan form agar dapat menggunakan method POST -->
-                            <form th:action="@{'/product/delete/' + ${product.productId}}" th:method="post">
+                            <form th:action="@{'/product/delete/' + ${product.productId}}" th:method="delete">
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                             </form>
                         </td>

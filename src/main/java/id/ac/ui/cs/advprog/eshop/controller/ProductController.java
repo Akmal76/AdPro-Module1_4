@@ -39,10 +39,10 @@ public class ProductController {
     }
 
     // Delete a product
-    @PostMapping("/delete/{productId}")
+    @DeleteMapping("/delete/{productId}")
     public String deleteProduct (@PathVariable String productId) {
         Product product = service.findProductById(productId);
         service.delete(product);
-        return "redirect:product/list";
+        return "redirect:../list";
     }
 }
