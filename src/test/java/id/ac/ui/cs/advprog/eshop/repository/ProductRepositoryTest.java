@@ -70,6 +70,16 @@ class ProductRepositoryTest {
         assertFalse(productIterator.hasNext());
     }
 
+    @Test
+    void testNegativeProductQuantity() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(-100);
+
+        assertFalse(product.getProductQuantity() > 0);
+    }
+
     // Test for edit product
     @Test
     void testEdit() {
@@ -81,14 +91,23 @@ class ProductRepositoryTest {
 
         product.setProductName("Sampo Cap Usep");
         product.setProductQuantity(50);
-        productRepository.update(product);
+        Product savedProduct = productRepository.update(product);
 
-        Iterator <Product> productIterator = productRepository.findAll();
-        assertTrue(productIterator.hasNext());
-        Product savedProduct = productIterator.next();
-        assertEquals(product.getProductId(), savedProduct.getProductId());
-        assertEquals(product.getProductName(), savedProduct.getProductName());
-        assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
+        assertEquals(product, savedProduct);
+    }
+
+    @Test
+    void testEditQuantityToNegative() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        product.setProductQuantity(-50);
+        Product savedProduct = productRepository.update(product);
+
+        assertFalse(savedProduct.getProductQuantity() > 0);
     }
 
     // Test for delete product
@@ -99,7 +118,6 @@ class ProductRepositoryTest {
         product.setProductName("Sampo Cap Bambang");
         product.setProductQuantity(100);
         productRepository.create(product);
-
         productRepository.delete(product);
 
         Iterator <Product> productIterator = productRepository.findAll();
