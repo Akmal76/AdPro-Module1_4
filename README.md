@@ -7,7 +7,7 @@
 # Module 1: Coding Standards
 
 ## Reflection 1
-***
+
 ### Penerapan Prinsip _Clean Code_
 **1. _Meaningful Names_**
 
@@ -50,7 +50,7 @@ terpecahkan, saya mencoba untuk menghubungi asisten dosen, terkadang juga bertan
 menunggu jawaban, saya juga tidak jarang untuk mencoba bantuan AI seperti ChatGPT.
 
 ## Reflection 2
-***
+
 ### Seputar _Unit Test_
 1. **Perasaan dalam Membuat _Unit Test_**
 
