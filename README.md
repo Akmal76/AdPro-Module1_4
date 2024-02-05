@@ -86,7 +86,7 @@ Walaupun _test_ tersebut sudah benar dan _code coverage_ terpenuhi, namun ada ka
 `pangkat` tersebut salah karena tidak sesuai dengan tujuannya. 
 
 ### _Clean Code_ pada _Functional Test_
-Menurut saya, hal tersebut bukan cara yang baik dalam menerapkan prinsip _clean code_ dan jelas mengurangi
+Menurut saya, hal tersebut bukan cara yang baik dalam menerapkan prinsip _clean code_. Tentunya mengurangi
 kualitas dari _clean code_-nya. Isu yang muncul ada karena kita **menggunakan suatu prosedur dan variabel yang
-sama** dimana hal tersebut bisa kita **buatkan ke dalam satu 'Class'**. Lalu kita dapat **memisahkan ke dalam fungsi
+sama**. Saran saya, hal tersebut bisa kita **buatkan ke dalam satu 'Class'**. Lalu kita dapat **memisahkan ke dalam fungsi
 yang berbeda** untuk setiap _test_ yang kita buat seperti prinsip _Do One Thing_.
