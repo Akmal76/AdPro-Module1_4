@@ -43,12 +43,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Set up  JDK 21
-      - name: Set up JDK 21
+      # Set Java version
+      - name: Use Java 21
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: "21"
+          cache: "gradle"
+          cache-dependency-path: | # optiona
+            eshop/*.gradle*
+            eshop/**/gradle-wrapper.properties
           
       - name: Analyze with SonarCloud
 
