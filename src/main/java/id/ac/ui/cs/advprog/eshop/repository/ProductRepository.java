@@ -13,8 +13,12 @@ public class ProductRepository {
 
     public Product create (Product product) {
         // Handle for invalid input
-        if (product.getProductName().equals("")) product.setProductName("Produk Tidak Diketahui");
-        if (product.getProductQuantity() < 0) product.setProductQuantity(0);
+        if (product.getProductName().equals("")) {
+            product.setProductName("Produk Tidak Diketahui");
+        }
+        if (product.getProductQuantity() < 0) {
+            product.setProductQuantity(0);
+        }
 
         productData.add(product);
         return product;
@@ -35,8 +39,12 @@ public class ProductRepository {
 
     public Product update (Product product) {
         // Handle for invalid input
-        if (product.getProductName().equals("")) product.setProductName("Produk Tidak Diketahui");
-        if (product.getProductQuantity() < 0) product.setProductQuantity(0);
+        if (product.getProductName().equals("")) {
+            product.setProductName("Produk Tidak Diketahui");
+        }
+        if (product.getProductQuantity() < 0) {
+            product.setProductQuantity(0);
+        }
 
         for (int i = 0; i < productData.size(); i++) {
             if (productData.get(i).getProductId().equals(product.getProductId())) {

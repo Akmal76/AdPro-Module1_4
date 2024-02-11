@@ -39,6 +39,30 @@ class ProductRepositoryTest {
     }
 
     @Test
+    void testFindProductById() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        Product savedProduct = productRepository.findProductById("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertEquals(product, savedProduct);
+    }
+
+    @Test
+    void testFindProductByUnknownId() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        Product savedProduct = productRepository.findProductById("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        assertNull(savedProduct);
+    }
+
+    @Test
     void testFindAllIfEmpty() {
         Iterator <Product> productIterator = productRepository.findAll();
         assertFalse(productIterator.hasNext());
@@ -105,6 +129,37 @@ class ProductRepositoryTest {
         Product savedProduct = productRepository.update(product);
 
         assertEquals(product, savedProduct);
+    }
+
+    @Test
+    void testEditNotFound() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        Product product2 = new Product();
+        product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
+        product2.setProductName("Sampo Cap Usep");
+        product2.setProductQuantity(50);
+        Product savedProduct = productRepository.update(product2);
+
+        assertNull(savedProduct);
+    }
+
+    @Test
+    void testEditProductNameToEmpty() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        productRepository.create(product);
+
+        product.setProductName("");
+        Product savedProduct = productRepository.update(product);
+
+        assertEquals("Produk Tidak Diketahui", savedProduct.getProductName());
     }
 
     @Test
