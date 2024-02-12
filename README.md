@@ -17,8 +17,65 @@ Aplikasi dapat diakses melalui link diatas.
 ## Reflection
 
 ### Daftar Isu _Code Quality_ yang Diperbaiki
+Berikut adalah isu-isu _code quality_ yang dideteksi oleh PMD dan yang saya perbaiki:
+#### 1. **Position literals first in String comparisons**
 
-### Definisi CI/CD di Workflow Saya
+**Permasalahan:** Perlu memposisikan _literals_ terlebih dahulu dalam perbandingan _String_. Jika tidak, apabila argumen
+`.equals()` bernilai `null`, maka akan terjadi _NullPointerException_.
+
+**Contoh Isu pada Proyek**:
+```java
+if (product.getProductName().equals("")) product.setProductName("Produk Tidak Diketahui");
+```
+**Solusi:** Menukar kedua argumen pada perbandingan _String_.
+```java
+if ("".equals(product.getProductName())) product.setProductName("Produk Tidak Diketahui");
+```
+
+#### 2. **This statement should have braces**
+
+**Permasalahan:** Pernyataan percabangan atau perulangan yang tidak memiliki _braces_ `{}`.
+
+**Contoh Isu pada Proyek:**
+```java
+if (product.getProductQuantity() < 0) product.setProductQuantity(0);
+```
+**Solusi:** Menambahkan _braces_ `{}` pada pernyataan tersebut.
+```java
+if (product.getProductQuantity() < 0) {
+    product.setProductQuantity(0);
+}
+```
+
+#### 3. **Unnecessary modifier `public` on method `...`: the method is declared in an interface type**
+
+**Permasalahan:** _Modifier_ `public` tidak diperlukan karena dalam _interface_ sudah secara _default_
+bersifat `public`.
+
+**Contoh Isu pada Proyek:**
+```java
+public interface ProductService {
+    public Product create (Product product);
+}
+```
+
+**Solusi:** Menghapus _modifier_ `public` pada _method_ tersebut.
+```java
+public interface ProductService {
+    Product create (Product product);
+}
+```
+
+#### 4. **Unused import `org.springframework.web.bind.annotation.*`**
+Permasalahan tidak relevan, karena _import_ tersebut memang tidak digunakan.
+
+### CI/CD di Workflow Saya
+
+Saya pikir, saya sudah mengimplementasikan CI/CD pada proyek saya. Saya menggunakan _GitHub Actions_ untuk menjalankan
+_workflow_ yang saya buat seperti `ci.yml`, `scorecard`, `sonarcloud.yml`, dan `pmd.yml`. _Workflow-workflow_ ini
+secara otomatis akan dijalankan ketika ada _push_ atau _pull request_ ke suatu _branch_. Pada titik ini, saya sudah
+menerapkan Continuous Integration (CI). Untuk Continuous Deployment (CD), saya menggunakan _Koyeb_ sebagai _platform_
+yang akan secara otomatis _deploy_ aplikasi saya ketika ada _push_ atau _pull request_ ke suatu _branch_.
 
 ## Reflection pada  Module Sebelumnya
 <details>
