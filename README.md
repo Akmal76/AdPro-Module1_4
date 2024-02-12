@@ -4,7 +4,27 @@
 * NPM     : 2206081534
 * Kelas   : Pemrograman Lanjut - A
 
-# Module 1: Coding Standards
+# Module 2: CI/CD & Dev Ops
+### SonarCloud Report
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Akmal76_tutorial-1&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Akmal76_tutorial-1)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Akmal76_tutorial-1&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Akmal76_tutorial-1)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Akmal76_tutorial-1&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Akmal76_tutorial-1)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Akmal76_tutorial-1&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Akmal76_tutorial-1)
+
+### [ADVShop (E-Shop)](https://adpro-akmal76.koyeb.app/)
+Aplikasi dapat diakses melalui link diatas.
+
+## Reflection
+
+### Daftar Isu _Code Quality_ yang Diperbaiki
+
+### Definisi CI/CD di Workflow Saya
+
+## Reflection pada  Module Sebelumnya
+<details>
+<summary>Module 1: Coding Standard</summary>
+
+# Module 1: Coding Standard
 
 ## Reflection 1
 
@@ -90,3 +110,4 @@ Menurut saya, hal tersebut bukan cara yang baik dalam menerapkan prinsip _clean 
 kualitas dari _clean code_-nya. Isu yang muncul ada karena kita **menggunakan suatu prosedur dan variabel yang
 sama**. Saran saya, hal tersebut bisa kita **buatkan ke dalam satu 'Class'**. Lalu kita dapat **memisahkan ke dalam fungsi
 yang berbeda** untuk setiap _test_ yang kita buat seperti prinsip _Do One Thing_.
+</details>
