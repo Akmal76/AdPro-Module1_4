@@ -13,7 +13,7 @@ public class ProductRepository {
 
     public Product create (Product product) {
         // Handle for invalid input
-        if (product.getProductName().equals("")) {
+        if ("".equals(product.getProductName())) {
             product.setProductName("Produk Tidak Diketahui");
         }
         if (product.getProductQuantity() < 0) {
@@ -39,7 +39,7 @@ public class ProductRepository {
 
     public Product update (Product product) {
         // Handle for invalid input
-        if (product.getProductName().equals("")) {
+        if ("".equals(product.getProductName())) {
             product.setProductName("Produk Tidak Diketahui");
         }
         if (product.getProductQuantity() < 0) {
