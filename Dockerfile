@@ -1,10 +1,10 @@
-FROM docker.io/library/eclipse-temurin:21-jdk-alpine as builder
+FROM docker.io/library/eclipse-temurin:21-jdk-alpine AS builder
 
 WORKDIR /src/eshop
 COPY . .
 RUN ./gradlew clean bootJar
 
-FROM docker.io/library/eclipse-temurin:21-jdk-alpine as runner
+FROM docker.io/library/eclipse-temurin:21-jdk-alpine AS runner
 
 ARG USER_NAME=eshop
 ARG USER_UID=1000
