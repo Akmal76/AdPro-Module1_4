@@ -81,11 +81,3 @@ tasks.jacocoTestReport {
 		html.required = true
 	}
 }
-
-sonar {
-	properties {
-		property("sonar.projectKey", "Akmal76_tutorial-1")
-		property("sonar.organization", "akmal76")
-		property("sonar.java.binaries", ".")
-	}
-}

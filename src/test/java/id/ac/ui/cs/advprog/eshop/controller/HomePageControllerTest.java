@@ -13,6 +13,7 @@ class HomePageControllerTest {
 
     @BeforeEach
     void setUp() {
+       // Inisialisasi sebelum melakukan testing
     }
 
     @InjectMocks
