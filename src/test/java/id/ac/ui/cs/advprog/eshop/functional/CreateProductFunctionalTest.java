@@ -38,7 +38,7 @@ public class CreateProductFunctionalTest {
 
     // Test menuju halaman Create Product
     @Test
-    void createProductPage_isCorrect(ChromeDriver driver) throws Exception {
+    void createProductPageIsCorrect(ChromeDriver driver) throws Exception {
         driver.get(baseUrl + "/product/create");
         String pageTitle = driver.getTitle();
 
@@ -47,7 +47,7 @@ public class CreateProductFunctionalTest {
 
     // Test untuk cek keberhasilkan dalam Create Product
     @Test
-    void createProductPost_isCorrect(ChromeDriver driver) throws Exception {
+    void createProductPostIsCorrect(ChromeDriver driver) throws Exception {
         driver.get(baseUrl + "/product/create");
         driver.findElement(By.id("nameInput")).sendKeys("Sampo Cap Bambang");
         driver.findElement(By.id("quantityInput")).sendKeys("100");
