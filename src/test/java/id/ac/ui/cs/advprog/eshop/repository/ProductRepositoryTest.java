@@ -53,7 +53,6 @@ class ProductRepositoryTest {
 
     @Test
     void testFindProductByUnknownId() {
-        Product product = initiateProduct();
         Product savedProduct = productRepository.findProductById("a0f9de46-90b1-437d-a0bf-d0821dde9096");
         assertNull(savedProduct);
     }
@@ -117,7 +116,6 @@ class ProductRepositoryTest {
 
     @Test
     void testEditNotFound() {
-        Product product = initiateProduct();
         Product product2 = new Product();
         product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
         product2.setProductName("Sampo Cap Usep");
