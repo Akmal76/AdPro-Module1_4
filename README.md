@@ -69,6 +69,110 @@ public interface ProductService {
 #### 4. **Unused import `org.springframework.web.bind.annotation.*`**
 Permasalahan tidak relevan, karena _import_ tersebut memang tidak digunakan. 
 
+#### 5. **Missing Description**
+
+**Permasalahan:** Komentar yang tidak jelas atau tidak ada.
+
+**Contoh Isu pada Proyek:**
+```html
+<table border="1" class="table table-striped table-responsive-md">
+    <thead>
+    <tr>
+        <th scope="col">Product Name</th>
+```
+**Solusi:** Menambahkan komentar yang jelas pada _tag_ `<table>`.
+```html
+<table border="1" class="table table-striped table-responsive-md">
+    <!-- Tabel untuk menampilkan produk dengan detail nama, kuantitas, dan tombol edit serta delete -->
+    <thead>
+    <tr>
+        <th scope="col">Product Name</th>
+```
+
+#### 6. **`as` pada Dockerfile**
+
+**Contoh Isu pada Proyek:**
+```Dockerfile
+FROM docker.io/library/eclipse-temurin:21-jdk-alpine as builder
+```
+
+**Solusi:** Mengubah `as` menjadi `AS` pada _Dockerfile_.
+```Dockerfile
+FROM docker.io/library/eclipse-temurin:21-jdk-alpine AS builder
+```
+
+#### 7. **Unused Private Modifier**
+
+**Permasalahan:** Terdapat _modifier private_ yang tidak berguna.
+
+**Contoh Isu pada Proyek:**
+```java
+public class Product {
+    private String productId;
+    private String productName;
+    private int productQuantity;
+    ...
+}
+```
+
+**Solusi:** Menghapus _modifier private_ yang tidak berguna.
+```java
+public class Product {
+    String productId;
+    String productName;
+    int productQuantity;
+    ...
+}
+```
+
+#### 8. **Missing Alt Image**
+
+**Permalsahan:** _Tag_ `<img>` yang tidak memiliki _attribute_ `alt`.
+
+**Contoh Isu pada Proyek:**
+```html
+<img src="https://cdn.vcgamers.com/news/wp-content/uploads/2023/02/PODUSZKA-ROBLOX-MAN-FACE-PREZENT.jpg">
+```
+
+**Solusi:** Menambahkan _attribute_ `alt` pada _tag_ `<img>`.
+```html
+<img src="https://cdn.vcgamers.com/news/wp-content/uploads/2023/02/PODUSZKA-ROBLOX-MAN-FACE-PREZENT.jpg" alt="Roblox Man Face">
+```
+
+#### 9. **Method Name Using Snake Case**
+
+**Permasalahan:** Nama _method_ menggunakan _snake case_.
+
+**Contoh Isu pada Proyek:**
+```java
+void createProductPage_isCorrect(ChromeDriver driver) throws Exception {
+    ...
+}
+```
+
+**Solusi:** Mengubah nama _method_ menggunakan _camel case_.
+```java
+void createProductPageIsCorrect(ChromeDriver driver) throws Exception {
+    ...
+}
+```
+
+10. **Handle Duplication**
+
+**Permasalahan:** Terdapat duplikasi kode yang tidak perlu seperti pada _unit test_ untuk `ProductRepositoryTest.java`.
+
+**Solusi:** Menggabungkan kode yang duplikat ke dalam satu _method_ yang sama.
+```java
+Product initiateProduct() {
+    Product product = new Product();
+    product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+    product.setProductName("Sampo Cap Bambang");
+    product.setProductQuantity(100);
+    productRepository.create(product);
+    return product;
+}
+```
+
 ### CI/CD di Workflow Saya
 
 Saya pikir, saya sudah mengimplementasikan CI/CD pada proyek saya. Saya menggunakan _GitHub Actions_ untuk menjalankan
@@ -76,8 +180,6 @@ _workflow_ yang saya buat seperti `ci.yml`, `scorecard`, `sonarcloud.yml`, dan `
 secara otomatis akan dijalankan ketika ada _push_ atau _pull request_ ke suatu _branch_. Pada titik ini, saya sudah
 menerapkan Continuous Integration (CI). Untuk Continuous Deployment (CD), saya menggunakan _Koyeb_ sebagai _platform_
 yang akan secara otomatis _deploy_ aplikasi saya ketika ada _push_ atau _pull request_ ke suatu _branch_.
-
-#### 5. ****
 
 ## Reflection pada  Module Sebelumnya
 <details>
