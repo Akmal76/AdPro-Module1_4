@@ -49,6 +49,9 @@ class ProductRepositoryTest {
         Product product = initiateProduct();
         Product savedProduct = productRepository.findProductById("eb558e9f-1c39-460e-8860-71af6af63bd6");
         assertEquals(product, savedProduct);
+
+        Product unknownProduct = productRepository.findProductById("fb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertNull(unknownProduct);
     }
 
     @Test
@@ -111,18 +114,15 @@ class ProductRepositoryTest {
         product.setProductQuantity(50);
         Product savedProduct = productRepository.update(product);
 
-        assertEquals(product, savedProduct);
-    }
+        assertEquals(savedProduct, product);
 
-    @Test
-    void testEditNotFound() {
         Product product2 = new Product();
         product2.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
         product2.setProductName("Sampo Cap Usep");
         product2.setProductQuantity(50);
-        Product savedProduct = productRepository.update(product2);
+        Product savedProduct2 = productRepository.update(product2);
 
-        assertNull(savedProduct);
+        assertNull(savedProduct2);
     }
 
     @Test
