@@ -26,15 +26,22 @@ class ProductServiceImplTest {
 
     @BeforeEach
     void setUp() {
+        // Inisialisasi sebelum melakukan testing
+    }
+
+    // Initiate product
+    Product initiateProduct() {
+        Product product = new Product();
+        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Sampo Cap Bambang");
+        product.setProductQuantity(100);
+        return product;
     }
 
     // Test for create and find product
     @Test
     void testCreateAndFind() {
-        Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(100);
+        Product product = initiateProduct();
 
         Mockito.when(productRepository.create(product)).thenReturn(product);
         productService.create(product);
@@ -52,10 +59,7 @@ class ProductServiceImplTest {
     // Test for find product by id
     @Test
     void testFindProductById() {
-        Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(100);
+        Product product = initiateProduct();
 
         Mockito.when(productRepository.findProductById("eb558e9f-1c39-460e-8860-71af6af63bd6")).thenReturn(product);
         Product savedProduct = productService.findProductById("eb558e9f-1c39-460e-8860-71af6af63bd6");
@@ -66,10 +70,7 @@ class ProductServiceImplTest {
     // Test for update product
     @Test
     void testUpdate() {
-        Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(100);
+        Product product = initiateProduct();
 
         Mockito.when(productRepository.update(product)).thenReturn(product);
         Product updatedProduct = productService.update(product);
@@ -80,10 +81,7 @@ class ProductServiceImplTest {
     // Test for delete product
     @Test
     void testDelete() {
-        Product product = new Product();
-        product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product.setProductName("Sampo Cap Bambang");
-        product.setProductQuantity(100);
+        Product product = initiateProduct();
 
         productService.delete(product);
         Mockito.verify(productRepository).delete(product);
