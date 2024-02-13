@@ -7,9 +7,9 @@ import java.util.UUID;
 
 @Getter @Setter
 public class Product {
-    private String productId;
-    private String productName;
-    private int productQuantity;
+    String productId;
+    String productName;
+    int productQuantity;
 
     public Product() {
         // Generate random UUID for product ID
