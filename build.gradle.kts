@@ -11,6 +11,8 @@ sonar {
 		property("sonar.projectKey", "Akmal76_tutorial-1")
 		property("sonar.organization", "akmal76")
 		property("sonar.host.url", "https://sonarcloud.io")
+		property("sonar.sources", "src/main/java")
+		property("sonar.tests", "src/test/java")
 	}
 }
 
