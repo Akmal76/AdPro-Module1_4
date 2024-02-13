@@ -75,4 +75,16 @@ tasks.test {
 
 tasks.jacocoTestReport {
 	dependsOn(tasks.test)
+
+	reports {
+		xml.required = true
+		html.required = true
+	}
+}
+
+sonar {
+	properties {
+		property("sonar.projectKey", "Akmal76_tutorial-1")
+		property("sonar.organization", "akmal76")
+	}
 }
