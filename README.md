@@ -17,7 +17,7 @@ Aplikasi dapat diakses melalui link diatas.
 ## Reflection
 
 ### Daftar Isu _Code Quality_ yang Diperbaiki
-Berikut adalah isu-isu _code quality_ yang dideteksi oleh PMD dan yang saya perbaiki:
+Berikut adalah isu-isu _code quality_ yang dideteksi oleh PMD dan SonarCloud yang saya perbaiki:
 #### 1. **Position literals first in String comparisons**
 
 **Permasalahan:** Perlu memposisikan _literals_ terlebih dahulu dalam perbandingan _String_. Jika tidak, apabila argumen
@@ -67,7 +67,7 @@ public interface ProductService {
 ```
 
 #### 4. **Unused import `org.springframework.web.bind.annotation.*`**
-Permasalahan tidak relevan, karena _import_ tersebut memang tidak digunakan.
+Permasalahan tidak relevan, karena _import_ tersebut memang tidak digunakan. 
 
 ### CI/CD di Workflow Saya
 
@@ -76,6 +76,8 @@ _workflow_ yang saya buat seperti `ci.yml`, `scorecard`, `sonarcloud.yml`, dan `
 secara otomatis akan dijalankan ketika ada _push_ atau _pull request_ ke suatu _branch_. Pada titik ini, saya sudah
 menerapkan Continuous Integration (CI). Untuk Continuous Deployment (CD), saya menggunakan _Koyeb_ sebagai _platform_
 yang akan secara otomatis _deploy_ aplikasi saya ketika ada _push_ atau _pull request_ ke suatu _branch_.
+
+#### 5. ****
 
 ## Reflection pada  Module Sebelumnya
 <details>
