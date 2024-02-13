@@ -157,7 +157,7 @@ void createProductPageIsCorrect(ChromeDriver driver) throws Exception {
 }
 ```
 
-10. **Handle Duplication**
+#### 10. **Handle Duplication**
 
 **Permasalahan:** Terdapat duplikasi kode yang tidak perlu seperti pada _unit test_ untuk `ProductRepositoryTest.java`.
 
