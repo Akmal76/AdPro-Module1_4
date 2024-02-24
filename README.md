@@ -4,7 +4,6 @@
 * NPM     : 2206081534
 * Kelas   : Pemrograman Lanjut - A
 
-# Module 2: CI/CD & Dev Ops
 ### SonarCloud Report
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Akmal76_tutorial-1&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Akmal76_tutorial-1)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Akmal76_tutorial-1&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Akmal76_tutorial-1)
@@ -14,6 +13,56 @@
 ### [ADVShop (E-Shop)](https://adpro-akmal76.koyeb.app/)
 Aplikasi dapat diakses melalui link diatas.
 
+# Module 3: Maintainability & OO Principles
+## Reflection
+
+### Prinsip S.O.L.I.D yang Diterapkan
+#### 1. **Single Responsibility Principle (SRP)**
+Diterapkan pada `HomePageController`, `ProductController`, dan `CarController`.
+- `HomePageController` memiliki tanggung jawab untuk melakukan _mapping_ dengan _endpoint_ `/`.
+- `ProductController` memiliki tanggung jawab untuk melakukan _mapping_ dengan _endpoint_ `/product`.
+- `CarController` memiliki tanggung jawab untuk melakukan _mapping_ dengan _endpoint_ `/car`.
+Oleh karena itu, saya membuat tiga _class_ yang berbeda.
+
+#### 2. **Liskov Substitution Principle (LSP)**
+Pada _branch_ `before-solid`, `ProductController.java` memiliki _subclass_ yaitu `CarController`. Padahal, `CarController`
+memiliki perilaku yang berbeda dengan _superclass_-nya. Contohnya `editProductPost` pada `ProductController` menggunakan _method_
+`PUT` dan `editCarPost` pada `CarController` menggunakan _method_ `POST`. Oleh karena itu, objek dari _superclass_
+tidak dapat digantikan oleh objek dari _subclass_-nya.
+Solusi saya menghapus _extends_ dari `CarController` dan membuat `CarController` menjadi _class_ yang berdiri sendiri di
+_file_ yang berbeda.
+
+#### 3. **Interface Segregation Principle (ISP)**
+Sudah diterapkan pada `CarService`. Menurut saya, tidak perlu dipisah lagi karena _interface_ ini fokus pada satu hal yaitu
+CRUD (_Create, Read, Update, Delete_) untuk `Car`.
+
+#### 4. **Dependency Inversion Principle (DIP)**
+Pada _branch_ `before-solid`, `CarController` bergantung langsung dengan `CarServiceImpl`. Hal ini tidak baik karena
+`CarController` seharusnya bergantung dengan _interface_ `CarService`. Oleh karena itu, saya mengganti tipe data dari variabel
+`carService` pada `CarController` menjadi `CarService`.
+
+### Keuntungan Menggunakan Prinsip S.O.L.I.D
+Menurut saya, dengan menerapkan prinsip S.O.L.I.D, kode yang saya buat menjadi lebih _modular_, rapi, dan mudah untuk
+di-_maintain_ secara berkelanjutan. Ketika ingin melakukan modifikasi kode jadi lebih _low effort_ karena tidak perlu
+mengubah banyak bagian kode. Terakhir, apabila bekerja dalam tim, menurut saya S.O.L.I.D dapat mempermudah _code review_
+dan menghindari kode yang sulit dipahami. Contoh penerapannya sudah saya jelaskan di atas.
+
+### Kekurangan Tidak Menggunakan Prinsip S.O.L.I.D
+Bagi saya, ini hanya keterbalikan dari apa yang sudah sebutkan diatas. Kode yang saya buat sulit
+untuk di-_maintain_ dan membutuhkan _effort_ yang lebih besar untuk melakukan modifikasi kode. Selain itu, apabila bekerja
+dalam tim, akan sulit untuk melakukan _code review_ dan kode yang sulit dipahami.
+
+Contoh:
+Misalkan saya tidak menerapkan SRP `CarController`, bagi saya akan mudah saja mencari kode bagian mana yang mengatur
+_mapping_ dengan _endpoint_ `/car` karena saya sendiri yang membuatnya. Namun, jika orang lain membaca repositori kita,
+akan sulit mencari kode tersebut karena disatukan dengan _file_ `ProductController`. Selain itu, jika tidak diterapkan LSP,
+_subclass_ `CarController` tidak dapat menggantikan _superclass_-nya.
+
+## Reflection pada  Module Sebelumnya
+<details>
+<summary>Module 2: CI/CD Dev Ops</summary>
+
+# Module 2: CI/CD & Dev Ops
 ## Reflection
 
 ### Daftar Isu _Code Quality_ yang Diperbaiki
@@ -67,7 +116,7 @@ public interface ProductService {
 ```
 
 #### 4. **Unused import `org.springframework.web.bind.annotation.*`**
-Permasalahan tidak relevan, karena _import_ tersebut memang tidak digunakan. 
+Permasalahan tidak relevan, karena _import_ tersebut memang tidak digunakan.
 
 #### 5. **Missing Description**
 
@@ -180,8 +229,8 @@ _workflow_ yang saya buat seperti `ci.yml`, `scorecard`, `sonarcloud.yml`, dan `
 secara otomatis akan dijalankan ketika ada _push_ atau _pull request_ ke suatu _branch_. Pada titik ini, saya sudah
 menerapkan Continuous Integration (CI). Untuk Continuous Deployment (CD), saya menggunakan _Koyeb_ sebagai _platform_
 yang akan secara otomatis _deploy_ aplikasi saya ketika ada _push_ atau _pull request_ ke suatu _branch_.
+</details>
 
-## Reflection pada  Module Sebelumnya
 <details>
 <summary>Module 1: Coding Standard</summary>
 
@@ -238,7 +287,7 @@ menunggu jawaban, saya juga tidak jarang untuk mencoba bantuan AI seperti ChatGP
 Setelah menulis kode _unit test_, saya merasa mudah untuk mencari _bug_ dalam kode saya. Misal, saya
 ingin tau apakah kode ketika membuat `Product` saya benar atau tidak. Alih-alih dengan membuka
 `localhost:8080/product/create` dan manual memasukkan data, dengan _unit test_, saya cukup menjalankan
-_test_-nya saja. Selain itu, _unit test_ membuat saya lebih yakin dengan kode yang saya buat. 
+_test_-nya saja. Selain itu, _unit test_ membuat saya lebih yakin dengan kode yang saya buat.
 
 2. **Banyaknya _Test_ yang Diperlukan dalam Sebuah `Class` dan Cara untuk Yakin Bahwa _Test_ Sudah Cukup**
 
@@ -264,7 +313,7 @@ void testPangkat() {
 }
 ```
 Walaupun _test_ tersebut sudah benar dan _code coverage_ terpenuhi, namun ada kasus dimana fungsi
-`pangkat` tersebut salah karena tidak sesuai dengan tujuannya. 
+`pangkat` tersebut salah karena tidak sesuai dengan tujuannya.
 
 ### _Clean Code_ pada _Functional Test_
 Menurut saya, hal tersebut bukan cara yang baik dalam menerapkan prinsip _clean code_. Tentunya mengurangi
