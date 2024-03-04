@@ -79,4 +79,20 @@ class PaymentRepositoryTest {
         Payment findResult = paymentRepository.findById("zczc");
         assertNull(findResult);
     }
+
+    @Test
+    void testFindAll() {
+        for (Payment payment : payments) {
+            paymentRepository.save(payment);
+        }
+
+        List<Payment> findResult = paymentRepository.findAll();
+        assertEquals(payments.size(), findResult.size());
+        for (int i = 0; i < payments.size(); i++) {
+            assertEquals(payments.get(i).getId(), findResult.get(i).getId());
+            assertEquals(payments.get(i).getMethod(), findResult.get(i).getMethod());
+            assertEquals(payments.get(i).getStatus(), findResult.get(i).getStatus());
+            assertSame(payments.get(i).getPaymentData(), findResult.get(i).getPaymentData());
+        }
+    }
 }
