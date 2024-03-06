@@ -13,6 +13,25 @@
 ### [ADVShop (E-Shop)](https://adpro-akmal76.koyeb.app/)
 Aplikasi dapat diakses melalui link diatas.
 
+# Module 4: Refactoring and TDD
+## Reflection
+
+#### Refleksi Terhadap TTD Flow
+Menurut saya, TTD _flow_ berguna walaupun sulit bagi saya yang baru pertama kali melakukannya. Saya masih kesulitan untuk
+membuat _testing_ terlebih dahulu sebelum mengimplementasikan _class_. Terlepas dari itu, TTD _flow_ membantu saya dalam
+mengevaluasi apakah hal yang saya lakukan sudah mencapai _correctness_, _maintainability_, dan _productive workflow_.
+Saya terpaksa untuk selalu cek apakah _tests_ (baik _unit test_ maupun _functional test_) yang saya buat membantu dalam
+mencapai _correctness_.
+
+#### Implementasi F.I.R.S.T
+Saya tidak yakin bahwa saya sudah mengimplementasi F.I.R.S.T sepenuhnya. Karena saya belum menerima 100% _line/branch
+coverage_. Dengan begitu, kedepannya saya harus menambahkan _tests_ untuk mencapai hal tersebut.
+
+
+## Reflection pada  Module Sebelumnya
+<details>
+<summary>Module 3: Maintainbility & OO Principles</summary>
+
 # Module 3: Maintainability & OO Principles
 ## Reflection
 
@@ -22,7 +41,7 @@ Diterapkan pada `HomePageController`, `ProductController`, dan `CarController`.
 - `HomePageController` memiliki tanggung jawab untuk melakukan _mapping_ dengan _endpoint_ `/`.
 - `ProductController` memiliki tanggung jawab untuk melakukan _mapping_ dengan _endpoint_ `/product`.
 - `CarController` memiliki tanggung jawab untuk melakukan _mapping_ dengan _endpoint_ `/car`.
-Oleh karena itu, saya membuat tiga _class_ yang berbeda.
+  Oleh karena itu, saya membuat tiga _class_ yang berbeda.
 
 #### 2. **Liskov Substitution Principle (LSP)**
 Pada _branch_ `before-solid`, `ProductController.java` memiliki _subclass_ yaitu `CarController`. Padahal, `CarController`
@@ -57,8 +76,8 @@ Misalkan saya tidak menerapkan SRP `CarController`, bagi saya akan mudah saja me
 _mapping_ dengan _endpoint_ `/car` karena saya sendiri yang membuatnya. Namun, jika orang lain membaca repositori kita,
 akan sulit mencari kode tersebut karena disatukan dengan _file_ `ProductController`. Selain itu, jika tidak diterapkan LSP,
 _subclass_ `CarController` tidak dapat menggantikan _superclass_-nya.
+</details>
 
-## Reflection pada  Module Sebelumnya
 <details>
 <summary>Module 2: CI/CD Dev Ops</summary>
 
